@@ -1,4 +1,57 @@
 .itemContainer {
   border-bottom: solid #F1F1F1 1px;
-  margin-bottom: 20px;
+  display: flex;
+}
+
+.red {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 15px;
+  background-color: #e2243d;
+  width: 15px;
+  height: 15px;
+  border: solid black 1px;
+}
+.yellow {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 4px;
+  background-color: #fffc5b;
+  width: 15px;
+  height: 15px;
+  border: solid black 1px;
+}
+.green {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 4px;
+  background-color: #4de259;
+  width: 15px;
+  height: 15px;
+  border: solid black 1px;
+}
+.white {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 4px;
+  background-color: white;
+  width: 15px;
+  height: 15px;
+  border: solid black 1px;
+}
+
+button {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-right: 5%;
+  margin-left: 5%;
+  flex: 5%;
+}
+
+.toDo {
+  flex: 65%;
+}
+
+.date {
+  flex: 25%;
 }

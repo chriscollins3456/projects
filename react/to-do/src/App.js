@@ -4,20 +4,6 @@ import Item from "./Item";
 import './App.css';
 import './App.css';
 
-const add = function (a, b){
-  return a + b
-}
-
-add(1,2)
-
-const addMe = (a, b) => {
-  return a + b
-}
-
-addMe(1,2)
-
-const addMe2 = (a, b) => a + b
-
 function map(arr, fn){
   var results = []
   for(var i = 0; i < arr.length; i++){
@@ -27,31 +13,68 @@ function map(arr, fn){
   return results
 }
 
-const numbers = [1,2,3]
-const square = n => n*n
-const timestwo = n => n*2
-const addindex = (n, i) => n+i
-console.log(numbers)
-console.log(map(numbers, n => n*2))
-console.log(map(numbers, timestwo))
-console.log(map(numbers, square))
-console.log(map(numbers, addindex))
-
-console.log(map(['this, thing'], (entry, i) => <Item key={i} value={entry}></Item>))
-
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       entries: [],
+      dates: [],
+      colors: [],
     };
     this.addEntry = this.addEntry.bind(this)
+    this.addDate = this.addDate.bind(this)
+    this.deleteEntry = this.deleteEntry.bind(this)
+    this.changeRed = this.changeRed.bind(this)
+    this.changeGreen = this.changeGreen.bind(this)
+    this.changeYellow = this.changeYellow.bind(this)
+    this.changeWhite = this.changeWhite.bind(this)
   }
 
   addEntry(text) {
     const newEntries = this.state.entries.concat([text])
-    this.setState({entries: newEntries})
+    const newColors = this.state.colors.concat(['white'])
+    this.setState({
+      entries: newEntries,
+      colors: newColors,
+    })
+  }
+
+  addDate(date) {
+    const newDates = this.state.dates.concat([date])
+    this.setState({dates: newDates})
+  }
+
+  changeRed(todo){
+    const i = this.state.entries.indexOf(todo)
+    this.state.colors[i] = '#e2243d';
+    this.setState({colors: this.state.colors})
+  }
+  changeYellow(todo){
+    const i = this.state.entries.indexOf(todo)
+    this.state.colors[i] = '#fffc5b';
+    this.setState({colors: this.state.colors})
+  }
+  changeGreen(todo){
+    const i = this.state.entries.indexOf(todo)
+    this.state.colors[i] = '#4de259';
+    this.setState({colors: this.state.colors})
+  }
+  changeWhite(todo){
+    const i = this.state.entries.indexOf(todo)
+    this.state.colors[i] = 'white';
+    this.setState({colors: this.state.colors})
+  }
+
+  deleteEntry(todo){
+    const i = this.state.entries.indexOf(todo)
+    this.state.entries.splice(i, 1)
+    this.state.dates.splice(i, 1)
+    this.state.colors.splice(i, 1)
+    this.setState({
+      entries: this.state.entries,
+      dates: this.state.dates,
+      colors: this.state.colors,
+    })
   }
 
   render() {
@@ -61,8 +84,9 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">To-Do List</h1>
         </header>
-        <Entry addEntry={this.addEntry}></Entry>
-        {map(this.state.entries, (entry, i) => <Item key={i} value={entry}></Item>)}
+        <Entry addEntry={this.addEntry} addDate={this.addDate}></Entry>
+        {map(this.state.entries, (entry, i) => <Item key={i} value={entry} date={this.state.dates[i]} color={this.state.colors[i]} deleteEntry={this.deleteEntry} changeRed={this.changeRed} changeYellow={this.changeYellow} changeGreen={this.changeGreen} changeWhite={this.changeWhite}></Item>)}
+
       </div>
     );
   }
