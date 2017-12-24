@@ -1,5 +1,8 @@
 import React from "react";
 import "./Item.css";
+import ColorButton from "./Colors";
+
+const Colors = ['#e2243d', '#fffc5b', '#4de259', 'white']
 
 class Item extends React.Component {
   constructor(props) {
@@ -8,36 +11,22 @@ class Item extends React.Component {
       color: ''
     }
     this.handleClick = this.handleClick.bind(this)
-    this.handleRed = this.handleRed.bind(this)
-    this.handleYellow = this.handleYellow.bind(this)
-    this.handleGreen = this.handleGreen.bind(this)
-    this.handleWhite = this.handleWhite.bind(this)
+    this.handleColor = this.handleColor.bind(this)
   }
 
   handleClick(event){
-    this.props.deleteEntry(this.props.value)
+    this.props.deleteEntry(this.props.id)
   }
 
-  handleRed(event){
-    this.props.changeRed(this.props.value)
-  }
-  handleYellow(event){
-    this.props.changeYellow(this.props.value)
-  }
-  handleGreen(event){
-    this.props.changeGreen(this.props.value)
-  }
-  handleWhite(event){
-    this.props.changeWhite(this.props.value)
+  handleColor(color){
+    this.props.changeColor(this.props.id, color)
   }
 
   render(){
     return (
       <div className='itemContainer' style={{backgroundColor: this.props.color}}>
-        <div className='red' onClick={this.handleRed}></div>
-        <div className='yellow' onClick={this.handleYellow}></div>
-        <div className='green' onClick={this.handleGreen}></div>
-        <div className='white' onClick={this.handleWhite}></div>
+        <div className='colorContainer'></div>
+          {Colors.map(color => <ColorButton color={color} handleColor={this.handleColor}></ColorButton>)}
         <button onClick={this.handleClick}>delete</button>
         <p className='toDo'>{this.props.value}</p>
         <p className='date'>{this.props.date}</p>

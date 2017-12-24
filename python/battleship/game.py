@@ -47,8 +47,6 @@ class Player:
                 return False
         return True
 
-
-
 player1 = Player(1)
 player2 = Player(2)
 
@@ -67,7 +65,7 @@ player2.insert_ship(ship4, 0, 1, 'D')
 player2.insert_ship(ship5, 0, 3, 'D')
 player2.insert_ship(ship6, 4, 0, 'R')
 
-while((player1.check_win() == False and player2.check_win()) == False):
+while((player1.check_win() and player2.check_win()) == False):
     x_move, y_move = input("Player 1, what is your move?\n").split()
     x_move, y_move = [int(x) for x in [x_move, y_move]]
     player2.strike(x_move, y_move)
