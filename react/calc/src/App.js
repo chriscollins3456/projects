@@ -19,12 +19,12 @@ class App extends Component {
   }
 
   clickNumber(number){
-    if (this.state.operatorClicked == true){
+    if (this.state.operatorClicked === true){
       this.setState({
         value: number,
         operand: this.state.operand,
         operator: this.state.operator,
-        operatorClicked: this.state.operator,
+        operatorClicked: null,
       })
     }
     else {
@@ -33,14 +33,13 @@ class App extends Component {
         value: newNumber,
         operand: this.state.operand,
         operator: this.state.operator,
-        operatorClicked: this.state.operator,
+        operatorClicked: null,
       })
     }
   }
 
   clickOperator(operator){
-    if (this.state.operatorClicked == false) {
-      const current = this.state.value
+    if (this.state.operatorClicked === false) {
       this.setState({
         value: this.state.value,
         operand: this.state.value,
