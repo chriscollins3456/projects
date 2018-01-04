@@ -1,3 +1,4 @@
+#I used the following to start up this project using webpack:
 
 # React + Flask starter kit
 
@@ -72,4 +73,3 @@ Then run the Flask app:
 ```
 python app.py
 ```
-
