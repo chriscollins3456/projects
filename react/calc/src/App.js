@@ -22,8 +22,6 @@ class App extends Component {
     if (this.state.operatorClicked === true){
       this.setState({
         value: number,
-        operand: this.state.operand,
-        operator: this.state.operator,
         operatorClicked: null,
       })
     }
