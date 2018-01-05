@@ -1,0 +1,21 @@
+.tweet{
+	background: white;
+	border: 1px solid #e6ecf0;
+	padding: 15px;
+}
+
+.username{
+	font-weight: bold;
+}
+
+.date{
+	color:#a39f9f;
+	text-align: right;
+	font-size: 85%;
+}
+.handle{
+	font-style: italic;
+	font-stretch: semi-condensed;
+	color: #a39f9f;
+	margin-bottom: 8px;
+}

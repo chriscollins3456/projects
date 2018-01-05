@@ -1,0 +1,41 @@
+
+.userBox {
+  background: $primary;
+}
+
+.userBox {
+  background: #F6f7f8;
+	padding: 10px;
+	margin-bottom: 50px;
+}
+
+.userBox .handle{
+	font-style: italic;
+	font-stretch: semi-condensed;
+	color: #a39f9f;
+	margin-bottom: 8px;
+}
+.userInfo{
+	display: flex;
+	margin-top: 10px;
+	margin-bottom: 5px;
+  text-align: center;
+}
+
+.numTweets{
+	flex:1;
+	background: white;
+	padding: 10px;
+	margin-right: 5px;
+}
+.numFollowing{
+	flex:1;
+	background: white;
+	padding: 10px;
+}
+.numFollowers{
+	flex:1;
+	background: white;
+	padding: 10px;
+	margin-left: 5px;
+}
