@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './Tweet.css';
+import './Tweet.css';
 
 
 class Tweet extends React.Component{

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './Userbox.css';
+import './Userbox.css';
 
 
 class Userbox extends React.Component {

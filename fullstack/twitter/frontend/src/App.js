@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import styles from './Twitter.css';
+import './App.css';
 import Userbox from "./Userbox";
 import Tweet from "./Tweet";
+import Submit from "./Submit";
 
-class Twitter extends Component {
+class App extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -32,6 +33,7 @@ class Twitter extends Component {
             <Userbox numTweets="20" numFollowers="300" numFollowing="250"></Userbox>
           </div>
           <div className='tweetColumn'>
+            <Submit></Submit>
             {this.state.loading && <p>loading</p>}
             {this.state.tweets.map(tweet => <Tweet key={tweet.id} text={tweet.text} username={tweet.username} date={tweet.date}></Tweet>)}
           </div>
@@ -41,4 +43,4 @@ class Twitter extends Component {
   }
 }
 
-export default Twitter;
+export default App;

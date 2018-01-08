@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import records
 import json
-from flask import jsonify
 from flask_cors import CORS
+import time
 
 app = Flask(__name__)
 CORS(app)
@@ -25,19 +25,20 @@ db.query("insert into tweets (text, username, date) values ('another tweet', 'ch
 def home():
 	db = records.Database('sqlite:///tweets.db')
 	rows = db.query("select * from tweets")
-
 	tweets = [{"id": row.id, "text": row.text, "username": row.username, "date": row.date} for row in rows.all()]
-	import time
 	time.sleep(1)
 
 	return jsonify(tweets)
 
-if __name__ == '__main__':
-	app.run(debug=True)
-
 @app.route('/tweet', methods=["POST"])
 def tweet():
 	db = records.Database('sqlite:///tweets.db')
-	q = "insert into tweets (text, username, date) values ('" + request.form['text'] + "', '" + request.form['username'] + "'," + "strftime('%Y-%m-%d %H:%M', 'now', 'localtime'))"
+	req_data = request.get_json()
+	text = req_data['text']
+	q = "insert into tweets (text, username, date) values ('{}', 'idk', strftime('%Y-%m-%d %H:%M', 'now', 'localtime'))".format(text)
 	db.query(q)
-	return redirect('/')
+	
+	return redirect(url_for('home'))
+
+if __name__ == '__main__':
+	app.run(debug=True)
