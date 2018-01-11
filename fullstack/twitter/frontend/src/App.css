@@ -11,7 +11,7 @@ body {
 
 .AppHeader {
   background-color: #222;
-  height: 75px;
+  height: 100px;
   color: white;
   text-align: center;
 }
@@ -19,7 +19,16 @@ body {
 .AppHeader h2{
   color: #1DA1F2;
   vertical-align: middle;
-  line-height: 75px;
+  line-height: 100px;
+  display: inline;
+  margin-left: 70px;
+}
+
+.AppHeader a, a:visited{
+  float: right;
+  margin-right: 30px;
+  margin-top: 15px;
+  color: white;
 }
 
 .homeFeed{

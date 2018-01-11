@@ -1,6 +1,7 @@
 
 .userBox {
   background: $primary;
+  border-radius: 5px;
 }
 
 .userBox {
@@ -15,7 +16,17 @@
 	color: #a39f9f;
 	margin-bottom: 8px;
 }
-.userInfo{
+
+.username {
+  display: inline-block;
+}
+
+.userInfo {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.userStats{
 	display: flex;
 	margin-top: 10px;
 	margin-bottom: 5px;
@@ -27,15 +38,32 @@
 	background: white;
 	padding: 10px;
 	margin-right: 5px;
+  border-radius: 5px;
 }
 .numFollowing{
 	flex:1;
 	background: white;
 	padding: 10px;
+  border-radius: 5px;
 }
 .numFollowers{
 	flex:1;
 	background: white;
 	padding: 10px;
 	margin-left: 5px;
+  border-radius: 5px;
+}
+
+.profilePic{
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  border: solid white 5px;
+  display: inline-block;
+}
+
+.stats {
+  color: #1DA1F2;
+  font-weight: bold;
+  margin-top: 5px;
 }

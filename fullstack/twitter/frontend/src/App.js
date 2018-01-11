@@ -9,9 +9,12 @@ class App extends Component {
     super(props);
     this.state = {
       tweets : [],
-      loading: true
+      loading: true,
+      user: 'Paul Dilyard',
+      handle: 'p-dilly'
     }
   }
+
   componentDidMount() {
     fetch('http://localhost:5000')
     .then(response => response.json())
@@ -22,20 +25,22 @@ class App extends Component {
       )
     })
   }
+
   render() {
     return (
       <div className='App'>
         <div className='AppHeader'>
           <h2>Twitter</h2>
+          <a href='http://localhost:3000'>logout</a>
         </div>
         <div className='homeFeed'>
           <div className='userColumn'>
-            <Userbox numTweets="20" numFollowers="300" numFollowing="250"></Userbox>
+            <Userbox user={this.state.user} handle={this.state.handle} numTweets={this.state.tweets.length} numFollowers="300" numFollowing="250"></Userbox>
           </div>
           <div className='tweetColumn'>
-            <Submit></Submit>
+            <Submit user={this.state.user} handle={this.state.handle}></Submit>
             {this.state.loading && <p>loading</p>}
-            {this.state.tweets.map(tweet => <Tweet key={tweet.id} text={tweet.text} username={tweet.username} date={tweet.date}></Tweet>)}
+            {this.state.tweets.map(tweet => <Tweet key={tweet.id} text={tweet.text} username={tweet.username} handle={tweet.handle} date={tweet.date}></Tweet>)}
           </div>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import React from "react";
 import './Tweet.css';
 
-
 class Tweet extends React.Component{
   render(){
     return(
@@ -10,7 +9,7 @@ class Tweet extends React.Component{
         <p>{this.props.username}</p>
       </div>
       <div className='handle'>
-        <p>@handle</p>
+        <p>@{this.props.handle}</p>
       </div>
       <p>{this.props.text}</p>
       <div className='date'>

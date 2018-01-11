@@ -7,6 +7,8 @@ class Submit extends React.Component {
     super(props);
     this.state={
       text: '',
+      user: this.props.user,
+      handle: this.props.handle,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -24,12 +26,14 @@ class Submit extends React.Component {
               },
               body: JSON.stringify({
                 text: this.state.text,
+                user: this.state.user,
+                handle: this.state.handle,
               })
             };
-
   fetch('http://localhost:5000/tweet', myInit)
   .then(response => response.json())
 }
+
   render() {
     return(
       <form className='submit' onSubmit={this.handleSubmit}>
