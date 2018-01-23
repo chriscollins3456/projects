@@ -33,7 +33,6 @@ class Submit extends React.Component {
   fetch('http://localhost:5000/tweet', myInit)
   .then(response => response.json())
 }
-
   render() {
     return(
       <form className='submit' onSubmit={this.handleSubmit}>

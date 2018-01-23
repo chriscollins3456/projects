@@ -1,0 +1,12 @@
+.accountBox{
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 40px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -130px;
+  margin-left: -130px;
+
+}
