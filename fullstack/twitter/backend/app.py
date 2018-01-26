@@ -21,7 +21,7 @@ handle		varchar(20),
 token		varchar(20));
 """)
 
-db.query("insert into users (username, password, handle) values ('chris', 'pass', 'handle')")
+db.query("insert into users (username, password, handle, token) values ('chris', 'pass', 'ccolli', 'AtoKen123')")
 
 db.query('DROP TABLE if exists tweets')
 db.query("""
@@ -36,7 +36,7 @@ userID 	integer NOT NULL,
 db.query("insert into tweets (text, userID, date) values ('this is our tweet', 1, strftime('%Y-%m-%d %H:%M', 'now', 'localtime'))")
 
 @app.route('/')
-def home():
+def tweets():
 	db = records.Database('sqlite:///tweets.db')
 	rows = db.query("select * from tweets inner join users on tweets.userID=users.id")
 	tweets = [{"id": row.id, "text": row.text, "username": row.username, "handle": row.handle, "date": row.date} for row in rows.all()]
@@ -49,8 +49,8 @@ def tweet():
 	db = records.Database('sqlite:///tweets.db')
 	req_data = request.get_json()
 	text = req_data['text']
-	user = req_data['user']
-	q = 'insert into tweets (text, userID, date) values ("{}", "{}", strftime("%Y-%m-%d %H:%M", "now", "localtime"))'.format(text, user)
+	id = req_data['id']
+	q = 'insert into tweets (text, userID, date) values ("{}", "{}", strftime("%Y-%m-%d %H:%M", "now", "localtime"))'.format(text, id)
 	db.query(q)
 
 	return redirect(url_for('home'))
@@ -66,8 +66,9 @@ def login():
 	for row in rows:
 		if username == row.username:
 			if password == row.password:
-				return jsonify({"session": "true"})
-	return jsonify({"session": "false"})
+				return jsonify({"id": row.id, "token": row.token, "handle": row.handle})
+			
+	return jsonify({"token": "incorrect"})
 
 @app.route('/account', methods=['POST'])
 def account():

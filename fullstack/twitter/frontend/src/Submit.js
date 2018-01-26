@@ -7,7 +7,7 @@ class Submit extends React.Component {
     super(props);
     this.state={
       text: '',
-      user: this.props.user,
+      id: this.props.id,
       handle: this.props.handle,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -26,12 +26,13 @@ class Submit extends React.Component {
               },
               body: JSON.stringify({
                 text: this.state.text,
-                user: this.state.user,
-                handle: this.state.handle,
+                id: this.props.id,
+                handle: this.props.handle,
               })
             };
   fetch('http://localhost:5000/tweet', myInit)
   .then(response => response.json())
+
 }
   render() {
     return(

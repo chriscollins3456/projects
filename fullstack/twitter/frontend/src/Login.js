@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Login.css';
 import {Link, Redirect} from 'react-router-dom';
 
@@ -10,7 +10,9 @@ class Logout extends React.Component{
       username: '',
       password: '',
       loggedIn: {
-        session: "",
+        handle: '',
+        id: '',
+        token: "none",
       }
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -27,7 +29,7 @@ class Logout extends React.Component{
   }
 
   handleSubmit(event){
-    event.preventDefault()
+    event.preventDefault();
     var myInit = { method: 'POST',
               headers: {
                 'Accept': 'application/json',
@@ -44,13 +46,16 @@ class Logout extends React.Component{
   }
 
   render(){
-
-    if(this.state.loggedIn.session == "true"){
-      this.setState({page: '/'})
+    if(this.state.loggedIn.token !== "none" && this.state.loggedIn.token !== "incorrect"){
+      localStorage.setItem("token", this.state.loggedIn.token)
+      localStorage.setItem("id", this.state.loggedIn.id)
+      localStorage.setItem("handle", this.state.loggedIn.handle)
+      localStorage.setItem("username", this.state.username)
+      return <Redirect to='/' />
     }
-    if(this.state.loggedIn.session == "false"){
+    if(this.state.loggedIn.token === "incorrect"){
       alert("wrong username or password")
-      this.setState({loggedIn: {session: ""}})
+      this.setState({loggedIn: {token: "none"}})
     }
 
     return(
@@ -63,7 +68,6 @@ class Logout extends React.Component{
             <input type='submit' value='Log In'></input>
           </form>
           <Link className='accountLink' to='/account'>Create New Account</Link>
-          <Redirect to={this.state.page} />
         </div>
       </div>
     );

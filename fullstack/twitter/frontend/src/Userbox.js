@@ -8,7 +8,7 @@ class Userbox extends React.Component {
         <div className='userBox'>
           <img src={paul} alt='' className='profilePic'></img>
           <div className='userInfo'>
-            <p className='username'>{this.props.user}</p>
+            <p className='username'>{this.props.username}</p>
             <p className='handle'>@{this.props.handle}</p>
           </div>
           <div className='userStats'>

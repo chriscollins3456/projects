@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Account.css';
 import {Redirect} from 'react-router-dom';
 
@@ -9,7 +9,7 @@ class Account extends React.Component{
       username: '',
       password: '',
       handle:'',
-      page: '/account'
+      submitted: false,
     }
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
@@ -31,7 +31,6 @@ class Account extends React.Component{
 
   handleSubmit(event){
     event.preventDefault();
-
     var myInit = { method: 'POST',
                   headers: {
                 'Accept': 'application/json',
@@ -45,12 +44,14 @@ class Account extends React.Component{
             };
       fetch('http://localhost:5000/account', myInit)
       .then(response => response.json())
-
-    this.setState({page: '/'})
-
+      
+    this.setState({submitted: true})
   }
 
   render(){
+    if(this.state.submitted === true){
+      return <Redirect to='/login' />
+    }
     return(
       <div>
         <form className='accountBox' onSubmit={this.handleSubmit}>
@@ -62,7 +63,6 @@ class Account extends React.Component{
           <input type='text' value={this.state.handle} onChange={this.handleHandle}></input>
           <input type='submit'></input>
         </form>
-        <Redirect to={this.state.page} />
       </div>
     )
   }
