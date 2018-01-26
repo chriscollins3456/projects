@@ -36,7 +36,7 @@ userID 	integer NOT NULL,
 db.query("insert into tweets (text, userID, date) values ('this is our tweet', 1, strftime('%Y-%m-%d %H:%M', 'now', 'localtime'))")
 
 @app.route('/')
-def tweets():
+def home():
 	db = records.Database('sqlite:///tweets.db')
 	rows = db.query("select * from tweets inner join users on tweets.userID=users.id")
 	tweets = [{"id": row.id, "text": row.text, "username": row.username, "handle": row.handle, "date": row.date} for row in rows.all()]
@@ -67,7 +67,7 @@ def login():
 		if username == row.username:
 			if password == row.password:
 				return jsonify({"id": row.id, "token": row.token, "handle": row.handle})
-			
+
 	return jsonify({"token": "incorrect"})
 
 @app.route('/account', methods=['POST'])
