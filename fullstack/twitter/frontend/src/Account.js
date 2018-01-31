@@ -9,7 +9,7 @@ class Account extends React.Component{
       username: '',
       password: '',
       handle:'',
-      submitted: false,
+      submitted: "false",
     }
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
@@ -44,13 +44,18 @@ class Account extends React.Component{
             };
       fetch('http://localhost:5000/account', myInit)
       .then(response => response.json())
-      
-    this.setState({submitted: true})
+      .then(response => {
+        this.setState({submitted: response.submitted})
+      })
   }
 
   render(){
-    if(this.state.submitted === true){
+    if(this.state.submitted === "true"){
       return <Redirect to='/login' />
+    }
+    else if(this.state.submitted === "error"){
+      alert("that username is already taken")
+      this.setState({submitted: "false"})
     }
     return(
       <div>

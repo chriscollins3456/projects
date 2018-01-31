@@ -26,8 +26,7 @@ class Submit extends React.Component {
               },
               body: JSON.stringify({
                 text: this.state.text,
-                id: this.props.id,
-                handle: this.props.handle,
+                token: localStorage.getItem("token")
               })
             };
   fetch('http://localhost:5000/tweet', myInit)

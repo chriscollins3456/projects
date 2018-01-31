@@ -16,7 +16,7 @@ class Home extends React.Component{
       handle: localStorage.getItem("handle"),
       token: localStorage.getItem("token"),
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.handleLogout = this.handleLogout.bind(this)
   }
 
   componentDidMount() {
@@ -30,7 +30,7 @@ class Home extends React.Component{
     })
   }
 
-  handleClick(){
+  handleLogout(){
     localStorage.clear();
   }
 
@@ -44,7 +44,7 @@ class Home extends React.Component{
       <div className='App'>
         <div className='AppHeader'>
           <h2>Twitter</h2>
-          <Link to='/login' onClick={this.handleClick}>logout</Link>
+          <Link to='/login' onClick={this.handleLogout}>logout</Link>
         </div>
         <div className='homeFeed'>
           <div className='userColumn'>
