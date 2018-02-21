@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchTweets, addTodo } from './actions';
+import { fetchTweets } from './actions';
 
 
 class App extends Component {
@@ -13,18 +13,17 @@ class App extends Component {
   }
 
   handleINC(event){
-    this.props.dispatch({type: "INC", payload: 4})
+    this.props.dispatch({type: "INC", payload: 1})
   }
   handleDEC(event){
     this.props.dispatch({type: "DEC", payload: 1})
   }
   handleSubmit(event){
-    event.preventDefault();
-    this.props.dispatch(addTodo(this.refs.input.value))
+    this.props.dispatch({type: "DEC", payload: 1})
   }
 
   componentDidMount() {
-    this.props.fetchTweets()
+    this.props.dispatch(fetchTweets())
   }
 
   render() {
@@ -34,15 +33,12 @@ class App extends Component {
         <button onClick={this.handleINC}>Increment</button>
         <button onClick={this.handleDEC}>Decrement</button>
         <p>{this.props.counter}</p>
-        {this.props.tweets.map(tweet => <p key={tweet.id}>{tweet.text}</p>)}
-        <h2>Fake to-do list</h2>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="tweet" ref="input"></input>
+          Tweet here:
+          <input type="text" placeholder="tweet"></input>
           <input type="submit"></input>
         </form>
-        <ul>
-          {this.props.todos.map(todo => <li>{todo}</li>)}
-        </ul>
+        {this.props.tweets.map(tweet => <p key={tweet.id}>{tweet.text}</p>)}
       </div>
     );
   }
@@ -52,14 +48,7 @@ function mapStateToProps(store){
   return {
     counter: store.counter.counter,
     tweets: store.tweets.tweets,
-    todos: store.todos.todos,
   };
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-    fetchTweets: () => dispatch(fetchTweets())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

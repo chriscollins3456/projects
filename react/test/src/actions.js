@@ -5,9 +5,3 @@ export function fetchTweets() {
     .then(response => dispatch({type: "GET_TWEETS", payload: response}))
   }
 }
-
-export function addTodo(text) {
-  return dispatch => {
-    dispatch({type: "ADD_TODO", payload: text})
-  }
-}
