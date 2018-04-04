@@ -16,7 +16,7 @@ class Node:
             else:
                 self.leftChild = node
     def find(self, node):
-        print('I')
+        print('I')                    #printing 'I' in order to count number of searches conducted
         if node.key == self.key:
             print(node.value)
             return True
