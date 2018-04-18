@@ -1,0 +1,15 @@
+.Channel {
+  height: 70px;
+  border-top: 1px solid white;
+  text-decoration: none;
+  color: white;
+}
+
+.Channel:hover {
+  cursor: pointer;
+}
+
+.Channel:active {
+  color: white;
+  text-decoration: none;
+}

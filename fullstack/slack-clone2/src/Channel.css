@@ -1,8 +1,0 @@
-.Channel {
-  height: 70px;
-  border-top: 1px solid white;
-}
-
-.Channel:hover {
-  cursor: pointer;
-}

@@ -1,0 +1,120 @@
+[
+  {
+    "id": 0,
+    "name": "general",
+    "subscribers": 7,
+    "messages": [
+      {
+        "id": 1,
+        "user": {
+          "id": 0,
+          "username": "Chris"
+        },
+        "text": "this is a slack clone message",
+        "channel_id": 0
+      },
+      {
+        "id": 2,
+        "user": {
+          "id": 1,
+          "username": "paul"
+        },
+        "text": "our second message, sent from the future",
+        "channel_id": 0
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "music",
+    "subscribers": 4,
+    "messages": [
+      {
+        "id": 1,
+        "user": {
+          "id": 0,
+          "username": "Chris"
+        },
+        "text": "music stuff here",
+        "channel_id": 1
+      },
+      {
+        "id": 2,
+        "user": {
+          "id": 1,
+          "username": "paul"
+        },
+        "text": "another music thing",
+        "channel_id": 1
+      },
+      {
+        "id": 3,
+        "user": {
+          "id": 2,
+          "username": "brian"
+        },
+        "text": "another music thing!",
+        "channel_id": 1
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "random",
+    "subscribers": 3,
+    "messages": [
+      {
+        "id": 1,
+        "user": {
+          "id": 0,
+          "username": "Chris"
+        },
+        "text": "this is a random message",
+        "channel_id": 2
+      },
+      {
+        "id": 2,
+        "user": {
+          "id": 1,
+          "username": "paul"
+        },
+        "text": "random name",
+        "channel_id": 2
+      },
+      {
+        "id": 3,
+        "user": {
+          "id": 2,
+          "username": "brian"
+        },
+        "text": "random name right here, new data",
+        "channel_id": 2
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "nyc",
+    "subscribers": 3,
+    "messages": [
+      {
+        "id": 1,
+        "user": {
+          "id": 0,
+          "username": "Chris"
+        },
+        "text": "this is an nyc message",
+        "channel_id": 3
+      },
+      {
+        "id": 2,
+        "user": {
+          "id": 1,
+          "username": "paul"
+        },
+        "text": "nyc name",
+        "channel_id": 3
+      }
+    ]
+  }
+]
