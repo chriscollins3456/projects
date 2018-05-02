@@ -5,7 +5,7 @@ import Channel from './Channel'
 
 class RenderPage extends Component{
   render(){
-    while(this.props.loading){
+    if(this.props.loading){
       return null
     }
     const channelName = this.props.match.params.channel
@@ -20,7 +20,6 @@ class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      clickedChannel: '',
       data: [],
       loading: true
     }
@@ -43,6 +42,7 @@ class App extends Component{
   }
   
   render(){
+    console.log(this.state.data)
     return(
       <Router>
         <div className = "App">
@@ -50,7 +50,7 @@ class App extends Component{
             <div className = "HeaderBox">
               <h2>Channels</h2>
             </div>
-            {this.state.data.map(channel => <Channel key={channel.id} name={channel.name} onClick={this.channelClicked} clickedChannel={this.state.clickedChannel} />)}
+            {this.state.data.map(channel => <Channel key={channel.id} name={channel.name} />)}
           </div>
           <div className="Feed">
             <Route exact path='/:channel' render={props => <RenderPage loading={this.state.loading} data={this.state.data} {...props} />} />

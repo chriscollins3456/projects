@@ -18,15 +18,25 @@ class Page extends Component {
   }
 
   handleSubmit(event){
-    console.log(this.state.message)
-    event.preventDefault();
-    this.setState({message: ''})
-  }
-
+    var myInit = { method: 'post',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                text: this.state.message,
+                user_id : 1,
+                channel_id: this.props.channel.id
+              })
+            };
+  fetch('http://localhost:4000/channels', myInit)
+  .then(response => response.json())
+}
+  
   render() {
     return (
       <div className = "Page">
-        <Header name={this.props.channel.name} subscribers={this.props.channel.subscribers}></Header>
+        <Header name={this.props.channel.name} subscribers={this.props.channel.users.length}></Header>
         <div className="Messages">
           {this.props.channel.messages.map(message => <Message key={message.id} user={message.user.username} text={message.text}></Message>)}
         </div>
